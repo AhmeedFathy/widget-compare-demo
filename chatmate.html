@@ -1,7 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script>window.__t0=performance.now();</script>
+<script>
+window.__t0=performance.now();window.__marks=[];
+(function(){function fixedEls(){var out=[];document.querySelectorAll('body *').forEach(function(el){if(el.closest('.wrap'))return;var cs=getComputedStyle(el);if((cs.position==='fixed'||cs.position==='absolute')&&el.offsetWidth>30&&el.offsetHeight>30&&el.offsetWidth<200){out.push(el)}});return out}
+function colourOf(el){var c=getComputedStyle(el).backgroundColor;if(c&&c!=='rgba(0, 0, 0, 0)')return c;var k=el.querySelector('*');while(k){var b=getComputedStyle(k).backgroundColor;if(b&&b!=='rgba(0, 0, 0, 0)')return b;k=k.firstElementChild}return 'n/a'}
+var seen=false;var mo=new MutationObserver(function(){if(seen)return;var f=fixedEls();if(f.length){seen=true;window.__marks.push({ev:'button visible',ms:Math.round(performance.now()),colour:colourOf(f[0])});setTimeout(function(){var g=fixedEls();window.__marks.push({ev:'5s later',ms:Math.round(performance.now()),colour:g.length?colourOf(g[0]):'gone'})},5000)}});
+document.addEventListener('DOMContentLoaded',function(){mo.observe(document.body,{childList:true,subtree:true,attributes:true});window.__marks.push({ev:'DOMContentLoaded',ms:Math.round(performance.now())})});})();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Widget compare — ChatMate</title>
